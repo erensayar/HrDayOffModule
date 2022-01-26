@@ -90,7 +90,7 @@ If you don't want setups, you can use wrapper. Easiest way run the spring applic
 ![h2-db-config](./dev-doc/H2-Conf.png)
     
 
-# I Prepared Requests With Saved Request & Saved Responses
+# I Prepared Collection With Saved Request & Saved Responses
 * You can use swagger of course but if you want use postman or something u can import this collection.
 
 * You can find collection for test the api. This collection include saved request and response and all endpoints. 
