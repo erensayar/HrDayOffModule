@@ -60,7 +60,7 @@ Maven:
 ## 1. Packaging:
 * Get application source code with Git. (You should have git program for run this command or you can just download source code from browser)
 
-        $ git clone https://github.com/erensayar/hr-day-off-module.git
+        $ git clone https://github.com/erensayar/HrDayOffModule.git
         $ cd ToDoApp
 
 * Compilation and build with maven.
