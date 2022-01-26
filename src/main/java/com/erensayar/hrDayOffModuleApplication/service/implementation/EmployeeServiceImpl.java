@@ -32,14 +32,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Value("${company.right-of-leave.lessThen1Year}")
-    private Double contactPoint;
+    private Double lessThen1Year;
 
     @Override
     public Employee createEmployee(EmployeeDto employeeDto) {
         if (employeeDto.getId() != null) {
             throw new BadRequestException();
         }
-        employeeDto.setUnusedDayOff(contactPoint);
+        employeeDto.setUnusedDayOff(lessThen1Year);
         employeeDto.setId("emp-" + UUID.randomUUID());
         return employeeRepo.save(converterOfEmployee(employeeDto));
     }
