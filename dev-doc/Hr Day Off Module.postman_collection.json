@@ -1,0 +1,1351 @@
+{
+	"info": {
+		"_postman_id": "c7455668-53d9-4ef3-afc6-d8490aa2528e",
+		"name": "Hr Day Off Module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Get Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/v1/employees",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/employees",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:26:22 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"emp-34c7c164-796b-4ee1-8b65-b8a86b3404d8\",\n        \"name\": \"Eren\",\n        \"surname\": \"Sayar\",\n        \"phoneNumber\": \"05332330001\",\n        \"companyMail\": \"eren.sayar1@company.com\",\n        \"personalMail\": \"eren.sayar1@yandex.com\",\n        \"unusedDayOff\": 5,\n        \"startDateOfWork\": \"2021-02-01\",\n        \"requests\": [\n            {\n                \"id\": 1,\n                \"reason\": \"Doktora gitmem gerekiyor\",\n                \"startDateOfLeave\": \"2022-01-15\",\n                \"endDateOfLeave\": \"2022-01-19\",\n                \"wantedTotalTime\": 2,\n                \"requestOpeningTime\": \"2022-01-26 11:25:59\",\n                \"leaveType\": \"EXCUSE_LEAVE\",\n                \"status\": \"AWAITING_APPROVAL\"\n            },\n            {\n                \"id\": 2,\n                \"reason\": \"Covid-19 oldum, raporluyum\",\n                \"startDateOfLeave\": \"2022-01-26\",\n                \"endDateOfLeave\": \"2022-02-15\",\n                \"wantedTotalTime\": 14,\n                \"requestOpeningTime\": \"2022-01-26 11:25:59\",\n                \"leaveType\": \"SICKNESS_LEAVE\",\n                \"status\": \"AWAITING_APPROVAL\"\n            }\n        ]\n    },\n    {\n        \"id\": \"emp-95ccd8de-f702-40d4-a1fc-3d56fd421f20\",\n        \"name\": \"Eren\",\n        \"surname\": \"Sayar\",\n        \"phoneNumber\": \"05332330002\",\n        \"companyMail\": \"eren.sayar2@company.com\",\n        \"personalMail\": \"eren.sayar2@yandex.com\",\n        \"unusedDayOff\": 5,\n        \"startDateOfWork\": \"2015-03-02\",\n        \"requests\": [\n            {\n                \"id\": 3,\n                \"reason\": \"Doğum yapacağım.\",\n                \"startDateOfLeave\": \"2022-01-01\",\n                \"endDateOfLeave\": \"2022-01-28\",\n                \"wantedTotalTime\": 18,\n                \"requestOpeningTime\": \"2022-01-26 11:25:59\",\n                \"leaveType\": \"CHILDBEARING_LEAVE\",\n                \"status\": \"AWAITING_APPROVAL\"\n            }\n        ]\n    },\n    {\n        \"id\": \"emp-9e0dca91-eaab-4fec-a630-74529d5ae450\",\n        \"name\": \"Egor\",\n        \"surname\": \"Mikhailovic\",\n        \"phoneNumber\": \"05332330003\",\n        \"companyMail\": \"egor.mikhailovic@company.com\",\n        \"personalMail\": \"egormikhailovic@yandex.com\",\n        \"unusedDayOff\": 5,\n        \"startDateOfWork\": \"2019-10-30\",\n        \"requests\": [\n            {\n                \"id\": 4,\n                \"reason\": \"Çocuğu okuldan almam gerekiyor.\",\n                \"startDateOfLeave\": \"2022-01-01\",\n                \"endDateOfLeave\": \"2022-01-05\",\n                \"wantedTotalTime\": 2,\n                \"requestOpeningTime\": \"2022-01-26 11:25:59\",\n                \"leaveType\": \"EXCUSE_LEAVE\",\n                \"status\": \"AWAITING_APPROVAL\"\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/v1/employees/:id",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "emp-34c7c164-796b-4ee1-8b65-b8a86b3404d8"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/employees/:id",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employees",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "emp-34c7c164-796b-4ee1-8b65-b8a86b3404d8"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:26:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"emp-34c7c164-796b-4ee1-8b65-b8a86b3404d8\",\n    \"name\": \"Eren\",\n    \"surname\": \"Sayar\",\n    \"phoneNumber\": \"05332330001\",\n    \"companyMail\": \"eren.sayar1@company.com\",\n    \"personalMail\": \"eren.sayar1@yandex.com\",\n    \"unusedDayOff\": 5,\n    \"startDateOfWork\": \"2021-02-01\",\n    \"requests\": [\n        {\n            \"id\": 1,\n            \"reason\": \"Doktora gitmem gerekiyor\",\n            \"startDateOfLeave\": \"2022-01-15\",\n            \"endDateOfLeave\": \"2022-01-19\",\n            \"wantedTotalTime\": 2,\n            \"requestOpeningTime\": \"2022-01-26 11:25:59\",\n            \"leaveType\": \"EXCUSE_LEAVE\",\n            \"status\": \"AWAITING_APPROVAL\"\n        },\n        {\n            \"id\": 2,\n            \"reason\": \"Covid-19 oldum, raporluyum\",\n            \"startDateOfLeave\": \"2022-01-26\",\n            \"endDateOfLeave\": \"2022-02-15\",\n            \"wantedTotalTime\": 14,\n            \"requestOpeningTime\": \"2022-01-26 11:25:59\",\n            \"leaveType\": \"SICKNESS_LEAVE\",\n            \"status\": \"AWAITING_APPROVAL\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "204",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/employees/:id",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employees",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "emp-c0ec6573-7671-4da0-b3e3-b0a89aaf7e1f"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:26:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Create Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "tr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"Legolas\",\n        \"surname\": \"hedehödö\",\n        \"phoneNumber\": \"05332330009\",\n        \"companyMail\": \"hede.hodo@company.com\",\n        \"personalMail\": \"hedehodo@gmail.com\",\n        \"unusedDayOff\": 5.0,\n        \"startDateOfWork\": \"2021-02-01\",\n        \"requestOfLeaveIdNumbers\": [5,6]\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/v1/employees",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "tr",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"name\": \"Legolas\",\n        \"surname\": \"hedehödö\",\n        \"phoneNumber\": \"05332330009\",\n        \"companyMail\": \"hede.hodo@company.com\",\n        \"personalMail\": \"hedehodo@gmail.com\",\n        \"unusedDayOff\": 5.0,\n        \"startDateOfWork\": \"2021-02-01\",\n        \"requestOfLeaveIdNumbers\": [5,6]\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/v1/employees",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employees"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:26:59 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"emp-f0b0dcb9-d90e-42d9-ba56-dd16c5333796\",\n    \"name\": \"Legolas\",\n    \"surname\": \"hedehödö\",\n    \"phoneNumber\": \"05332330009\",\n    \"companyMail\": \"hede.hodo@company.com\",\n    \"personalMail\": \"hedehodo@gmail.com\",\n    \"unusedDayOff\": 5,\n    \"startDateOfWork\": \"2021-02-01\",\n    \"requests\": [\n        {\n            \"id\": 5,\n            \"reason\": \"Create Metodu İçin Deneme\",\n            \"startDateOfLeave\": \"2022-01-04\",\n            \"endDateOfLeave\": \"2022-03-06\",\n            \"wantedTotalTime\": 43,\n            \"requestOpeningTime\": \"2022-01-26 11:25:59\",\n            \"leaveType\": \"ANNUAL_PAID_LEAVE\",\n            \"status\": \"AWAITING_APPROVAL\"\n        },\n        {\n            \"id\": 6,\n            \"reason\": \"Create Metodu İçin Deneme\",\n            \"startDateOfLeave\": \"2022-01-26\",\n            \"endDateOfLeave\": \"2022-01-28\",\n            \"wantedTotalTime\": 1,\n            \"requestOpeningTime\": \"2022-01-26 11:25:59\",\n            \"leaveType\": \"NATIONAL_HOLIDAYS_GENERAL_HOLIDAYS_LEAVE\",\n            \"status\": \"AWAITING_APPROVAL\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "409",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "tr",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"name\": \"Legolas\",\n        \"surname\": \"hedehödö\",\n        \"phoneNumber\": \"05332330009\",\n        \"companyMail\": \"hede.hodo@company.com\",\n        \"personalMail\": \"hedehodo@gmail.com\",\n        \"unusedDayOff\": 5.0,\n        \"startDateOfWork\": \"2021-02-01\",\n        \"requestOfLeaveIdNumbers\": [5,6]\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/v1/employees",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employees"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:25:27 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorType\": \"org.springframework.dao.DataIntegrityViolationException\",\n    \"errorCode\": \"0003\",\n    \"errorMessage\": \"Content Conflict\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Employee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": \"emp-5565a3c3-a163-408f-b596-2541b758bb83\",\n        \"name\": \"Updated\",\n        \"surname\": \"Updated\",\n        \"phoneNumber\": \"05332330001\",\n        \"companyMail\": \"eren.sayar1@company.com\",\n        \"personalMail\": \"eren.sayar1@yandex.com\",\n        \"unusedDayOff\": 5.0,\n        \"startDateOfWork\": \"2021-02-01\",\n        \"requestOfLeaveIdNumbers\":[1,2]\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/v1/employees",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"id\": \"emp-5565a3c3-a163-408f-b596-2541b758bb83\",\n        \"name\": \"Updated\",\n        \"surname\": \"Updated\",\n        \"phoneNumber\": \"05332330001\",\n        \"companyMail\": \"eren.sayar1@company.com\",\n        \"personalMail\": \"eren.sayar1@yandex.com\",\n        \"unusedDayOff\": 5.0,\n        \"startDateOfWork\": \"2021-02-01\",\n        \"requestOfLeaveIdNumbers\":[1,2]\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/v1/employees",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:34:31 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"emp-5565a3c3-a163-408f-b596-2541b758bb83\",\n    \"name\": \"Updated\",\n    \"surname\": \"Updated\",\n    \"phoneNumber\": \"05332330001\",\n    \"companyMail\": \"eren.sayar1@company.com\",\n    \"personalMail\": \"eren.sayar1@yandex.com\",\n    \"unusedDayOff\": 5,\n    \"startDateOfWork\": \"2021-02-01\",\n    \"requests\": [\n        {\n            \"id\": 1,\n            \"reason\": \"Doktora gitmem gerekiyor\",\n            \"startDateOfLeave\": \"2022-01-15\",\n            \"endDateOfLeave\": \"2022-01-19\",\n            \"wantedTotalTime\": 2,\n            \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n            \"leaveType\": \"EXCUSE_LEAVE\",\n            \"status\": \"AWAITING_APPROVAL\"\n        },\n        {\n            \"id\": 2,\n            \"reason\": \"Covid-19 oldum, raporluyum\",\n            \"startDateOfLeave\": \"2022-01-26\",\n            \"endDateOfLeave\": \"2022-02-15\",\n            \"wantedTotalTime\": 14,\n            \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n            \"leaveType\": \"SICKNESS_LEAVE\",\n            \"status\": \"AWAITING_APPROVAL\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"id\": \"emp-5565a3c3-a163-408f-b596-2541b758bb83\",\n        \"name\": \"Updated\",\n        \"surname\": \"Updated\",\n        \"phoneNumber\": \"055445656332330001\",\n        \"companyMail\": \"eren.sayar1@company.com\",\n        \"personalMail\": \"eren.sayar1@yandex.com\",\n        \"unusedDayOff\": 5.0,\n        \"startDateOfWork\": \"2021-02-01\",\n        \"requestOfLeaveIdNumbers\":[1,2]\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/v1/employees",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employees"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:34:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorType\": \"org.hibernate.validator.internal.engine.ConstraintViolationImpl\",\n    \"errorCode\": \"0006\",\n    \"errorMessage\": \"Phone number size must be 11 characters long.\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"id\": \"emp-5565a3c3-a163-408f-b596-2541b758bb83\",\n        \"name\": \"Updated\",\n        \"surname\": \"Updated\",\n        \"phoneNumber\": \"055445656332330001\",\n        \"companyMail\": \"eren.sayarsdompany.com\",\n        \"personalMail\": \"eren.sayar1@yandex.com\",\n        \"unusedDayOff\": 5.0,\n        \"startDateOfWork\": \"2021-02-01\",\n        \"requestOfLeaveIdNumbers\":[1,2]\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/v1/employees",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employees"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:34:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorType\": \"org.hibernate.validator.internal.engine.ConstraintViolationImpl\",\n    \"errorCode\": \"0006\",\n    \"errorMessage\": \"Enter a real e-mail address.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/v1/employees/:id",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "emp-5565a3c3-a163-408f-b596-2541b758bb83"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/employees/:id",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employees",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "emp-5565a3c3-a163-408f-b596-2541b758bb83"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:35:14 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "RequestOfLeave",
+			"item": [
+				{
+					"name": "Get Requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/v1/requestOfLeaves",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"requestOfLeaves"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:35:20 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"reason\": \"Doktora gitmem gerekiyor\",\n        \"startDateOfLeave\": \"2022-01-15\",\n        \"endDateOfLeave\": \"2022-01-19\",\n        \"wantedTotalTime\": 2,\n        \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n        \"leaveType\": \"EXCUSE_LEAVE\",\n        \"status\": \"AWAITING_APPROVAL\"\n    },\n    {\n        \"id\": 2,\n        \"reason\": \"Covid-19 oldum, raporluyum\",\n        \"startDateOfLeave\": \"2022-01-26\",\n        \"endDateOfLeave\": \"2022-02-15\",\n        \"wantedTotalTime\": 14,\n        \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n        \"leaveType\": \"SICKNESS_LEAVE\",\n        \"status\": \"AWAITING_APPROVAL\"\n    },\n    {\n        \"id\": 3,\n        \"reason\": \"Doğum yapacağım.\",\n        \"startDateOfLeave\": \"2022-01-01\",\n        \"endDateOfLeave\": \"2022-01-28\",\n        \"wantedTotalTime\": 18,\n        \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n        \"leaveType\": \"CHILDBEARING_LEAVE\",\n        \"status\": \"AWAITING_APPROVAL\"\n    },\n    {\n        \"id\": 4,\n        \"reason\": \"Çocuğu okuldan almam gerekiyor.\",\n        \"startDateOfLeave\": \"2022-01-01\",\n        \"endDateOfLeave\": \"2022-01-05\",\n        \"wantedTotalTime\": 2,\n        \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n        \"leaveType\": \"EXCUSE_LEAVE\",\n        \"status\": \"AWAITING_APPROVAL\"\n    },\n    {\n        \"id\": 5,\n        \"reason\": \"Create Metodu İçin Deneme\",\n        \"startDateOfLeave\": \"2022-01-04\",\n        \"endDateOfLeave\": \"2022-03-06\",\n        \"wantedTotalTime\": 43,\n        \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n        \"leaveType\": \"ANNUAL_PAID_LEAVE\",\n        \"status\": \"AWAITING_APPROVAL\"\n    },\n    {\n        \"id\": 6,\n        \"reason\": \"Create Metodu İçin Deneme\",\n        \"startDateOfLeave\": \"2022-01-26\",\n        \"endDateOfLeave\": \"2022-01-28\",\n        \"wantedTotalTime\": 1,\n        \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n        \"leaveType\": \"NATIONAL_HOLIDAYS_GENERAL_HOLIDAYS_LEAVE\",\n        \"status\": \"AWAITING_APPROVAL\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/v1/requestOfLeaves/:id",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"requestOfLeaves",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves/:id",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:35:29 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"reason\": \"Doktora gitmem gerekiyor\",\n    \"startDateOfLeave\": \"2022-01-15\",\n    \"endDateOfLeave\": \"2022-01-19\",\n    \"wantedTotalTime\": 2,\n    \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n    \"leaveType\": \"EXCUSE_LEAVE\",\n    \"status\": \"AWAITING_APPROVAL\"\n}"
+						},
+						{
+							"name": "204",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves/:id",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1423234"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:35:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Create Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"reason\": \"Doktora gitmem gerekiyor\",\n        \"startDateOfLeave\": \"2022-01-13\",\n        \"endDateOfLeave\": \"2022-01-20\",\n        \"leaveType\": \"EXCUSE_LEAVE\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/v1/requestOfLeaves",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"requestOfLeaves"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"reason\": \"Doktora gitmem gerekiyor\",\n        \"startDateOfLeave\": \"2022-01-13\",\n        \"endDateOfLeave\": \"2022-01-20\",\n        \"leaveType\": \"EXCUSE_LEAVE\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:35:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"reason\": \"Doktora gitmem gerekiyor\",\n    \"startDateOfLeave\": \"2022-01-13\",\n    \"endDateOfLeave\": \"2022-01-20\",\n    \"wantedTotalTime\": 5,\n    \"requestOpeningTime\": \"2022-01-26 11:35:47\",\n    \"leaveType\": \"EXCUSE_LEAVE\",\n    \"status\": \"AWAITING_APPROVAL\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"reason\": \"Doktora gitmem gerekiyor\",\n        //\"startDateOfLeave\": \"2022-01-13\",\n        \"endDateOfLeave\": \"2022-01-20\",\n        \"leaveType\": \"EXCUSE_LEAVE\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:36:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-01-26T08:36:01.690+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"path\": \"/api/v1/requestOfLeaves\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 1,\n        \"reason\": \"Doıughophı8uhpiyor\",\n        \"startDateOfLeave\": \"2022-01-15\",\n        \"endDateOfLeave\": \"2022-01-30\",\n        \"requestOpeningTime\": \"2022-01-26 02:47:19\",\n        \"leaveType\": 5,\n        \"status\": 1\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/v1/requestOfLeaves",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"requestOfLeaves"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"id\": 1,\n        \"reason\": \"Doıughophı8uhpiyor\",\n        \"startDateOfLeave\": \"2022-01-15\",\n        \"endDateOfLeave\": \"2022-01-30\",\n        \"requestOpeningTime\": \"2022-01-26 02:47:19\",\n        \"leaveType\": 5,\n        \"status\": 1\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:36:16 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"reason\": \"Doıughophı8uhpiyor\",\n    \"startDateOfLeave\": \"2022-01-15\",\n    \"endDateOfLeave\": \"2022-01-30\",\n    \"wantedTotalTime\": 9,\n    \"requestOpeningTime\": \"2022-01-26 02:47:19\",\n    \"leaveType\": \"BREASTFEEDING_LEAVE\",\n    \"status\": \"APPROVED\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/v1/requestOfLeaves/:requestId/:employeeId",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"requestOfLeaves",
+								":requestId",
+								":employeeId"
+							],
+							"variable": [
+								{
+									"key": "requestId",
+									"value": "3"
+								},
+								{
+									"key": "employeeId",
+									"value": "emp-75b6d1ce-8142-4a4f-97ab-308d73f7563a"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves/:requestId/:employeeId",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves",
+										":requestId",
+										":employeeId"
+									],
+									"variable": [
+										{
+											"key": "requestId",
+											"value": "3"
+										},
+										{
+											"key": "employeeId",
+											"value": "emp-75b6d1ce-8142-4a4f-97ab-308d73f7563a"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:37:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves/:requestId/:employeeId",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves",
+										":requestId",
+										":employeeId"
+									],
+									"variable": [
+										{
+											"key": "requestId",
+											"value": "3"
+										},
+										{
+											"key": "employeeId",
+											"value": "3452345234532434"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:37:16 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Set Status Of Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/v1/requestOfLeaves/setStatusOfRequest/:employeeId/:requestId/",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"requestOfLeaves",
+								"setStatusOfRequest",
+								":employeeId",
+								":requestId",
+								""
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "emp-b871bf57-7129-4727-8cba-c084bfab1956"
+								},
+								{
+									"key": "requestId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves/setStatusOfRequest/:employeeId/:requestId/",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves",
+										"setStatusOfRequest",
+										":employeeId",
+										":requestId",
+										""
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "emp-7464d4da-661c-40e7-a121-19eb05ed11dd"
+										},
+										{
+											"key": "requestId",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:38:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"reason\": \"Çocuğu okuldan almam gerekiyor.\",\n    \"startDateOfLeave\": \"2022-01-01\",\n    \"endDateOfLeave\": \"2022-01-05\",\n    \"wantedTotalTime\": 2,\n    \"requestOpeningTime\": \"2022-01-26 11:32:58\",\n    \"leaveType\": \"EXCUSE_LEAVE\",\n    \"status\": \"APPROVED\"\n}"
+						},
+						{
+							"name": "200 - izin hakkı yok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/v1/requestOfLeaves/setStatusOfRequest/:employeeId/:requestId/",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"requestOfLeaves",
+										"setStatusOfRequest",
+										":employeeId",
+										":requestId",
+										""
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "emp-b871bf57-7129-4727-8cba-c084bfab1956"
+										},
+										{
+											"key": "requestId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jan 2022 08:39:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorType\": \"com.erensayar.hrDayOffModuleApplication.error.exception.OkWithMessage\",\n    \"errorCode\": \"0007\",\n    \"errorMessage\": \"Yeterli izin hakkı yok.\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base-url",
+			"value": "127.0.0.1:8000"
+		}
+	]
+}

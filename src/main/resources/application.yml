@@ -1,0 +1,29 @@
+## Constants
+company:
+  right-of-leave:
+    lessThen1Year: 5
+    twoToFiveYearsLeaveRightAsDay: 15
+    fiveToTenYearsLeaveRightAsDay: 18
+    moreThen10YearsLeaveRightAsDay: 24
+
+## Server Config
+server:
+  port: 8000
+
+## H2 DB Config
+spring:
+  main:
+    allow-circular-references: true # I have nested services so I need setter injection. Circular References Prohibited by Default in spring boot 2.6 so i need this config.
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher # Spring 2.6 and upper version need it for use swagger 2.9
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:h2:mem:hr-day-off
+    username: sa
