@@ -1,10 +1,11 @@
 package com.erensayar.hrDayOffModuleApplication.component;
 
 import com.erensayar.hrDayOffModuleApplication.model.dto.EmployeeDto;
+import com.erensayar.hrDayOffModuleApplication.model.dto.RequestOfLeaveDto;
 import com.erensayar.hrDayOffModuleApplication.model.entity.RequestOfLeave;
 import com.erensayar.hrDayOffModuleApplication.model.enums.LeaveTypeEnum;
-import com.erensayar.hrDayOffModuleApplication.repo.RequestOfLeaveRepo;
 import com.erensayar.hrDayOffModuleApplication.service.EmployeeService;
+import com.erensayar.hrDayOffModuleApplication.service.RequestOfLeaveService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -21,53 +22,59 @@ import java.util.List;
 public class CmdLineRunner implements CommandLineRunner {
 
     private final EmployeeService employeeService;
-    private final RequestOfLeaveRepo requestOfLeaveRepo;
+    private final RequestOfLeaveService requestOfLeaveService;
 
     @Override
     public void run(String... args) throws Exception {
 
-        RequestOfLeave request1 = new RequestOfLeave(
-                "Doktora gitmem gerekiyor",
-                LocalDate.of(2022, 1, 15),
-                LocalDate.of(2022, 1, 19),
-                LeaveTypeEnum.EXCUSE_LEAVE);
+        RequestOfLeaveDto request1 = RequestOfLeaveDto.builder()
+                .reason("Doktora gitmem gerekiyor")
+                .startDateOfLeave(LocalDate.of(2022, 1, 15))
+                .endDateOfLeave(LocalDate.of(2022, 1, 19))
+                .leaveType(LeaveTypeEnum.EXCUSE_LEAVE)
+                .build();
 
-        RequestOfLeave request2 = new RequestOfLeave(
-                "Covid-19 oldum, raporluyum",
-                LocalDate.of(2022, 1, 26),
-                LocalDate.of(2022, 2, 15),
-                LeaveTypeEnum.SICKNESS_LEAVE);
+        RequestOfLeaveDto request2 = RequestOfLeaveDto.builder()
+                .reason("Covid-19 oldum, raporluyum")
+                .startDateOfLeave(LocalDate.of(2022, 1, 26))
+                .endDateOfLeave(LocalDate.of(2022, 2, 15))
+                .leaveType(LeaveTypeEnum.SICKNESS_LEAVE)
+                .build();
 
-        RequestOfLeave request3 = new RequestOfLeave(
-                "Doğum yapacağım.",
-                LocalDate.of(2022, 1, 1),
-                LocalDate.of(2022, 1, 28),
-                LeaveTypeEnum.CHILDBEARING_LEAVE);
+        RequestOfLeaveDto request3 = RequestOfLeaveDto.builder()
+                .reason("Doğum yapacağım.")
+                .startDateOfLeave(LocalDate.of(2022, 1, 1))
+                .endDateOfLeave(LocalDate.of(2022, 1, 28))
+                .leaveType(LeaveTypeEnum.CHILDBEARING_LEAVE)
+                .build();
 
-        RequestOfLeave request4 = new RequestOfLeave(
-                "Çocuğu okuldan almam gerekiyor.",
-                LocalDate.of(2022, 1, 1),
-                LocalDate.of(2022, 1, 5),
-                LeaveTypeEnum.EXCUSE_LEAVE);
+        RequestOfLeaveDto request4 = RequestOfLeaveDto.builder()
+                .reason("Çocuğu okuldan almam gerekiyor.")
+                .startDateOfLeave(LocalDate.of(2022, 1, 1))
+                .endDateOfLeave(LocalDate.of(2022, 1, 15))
+                .leaveType(LeaveTypeEnum.CHILDBEARING_LEAVE)
+                .build();
 
-        RequestOfLeave request5 = new RequestOfLeave(
-                "Create Metodu İçin Deneme",
-                LocalDate.of(2022, 1, 4),
-                LocalDate.of(2022, 3, 6),
-                LeaveTypeEnum.ANNUAL_PAID_LEAVE);
+        RequestOfLeaveDto request5 = RequestOfLeaveDto.builder()
+                .reason("Create Metodu İçin Deneme")
+                .startDateOfLeave(LocalDate.of(2022, 1, 4))
+                .endDateOfLeave(LocalDate.of(2022, 3, 6))
+                .leaveType(LeaveTypeEnum.ANNUAL_PAID_LEAVE)
+                .build();
 
-        RequestOfLeave request6 = new RequestOfLeave(
-                "Create Metodu İçin Deneme",
-                LocalDate.of(2022, 1, 26),
-                LocalDate.of(2022, 1, 28),
-                LeaveTypeEnum.NATIONAL_HOLIDAYS_GENERAL_HOLIDAYS_LEAVE);
+        RequestOfLeaveDto request6 = RequestOfLeaveDto.builder()
+                .reason("Create Metodu İçin Deneme")
+                .startDateOfLeave(LocalDate.of(2022, 1, 26))
+                .endDateOfLeave(LocalDate.of(2022, 1, 28))
+                .leaveType(LeaveTypeEnum.NATIONAL_HOLIDAYS_GENERAL_HOLIDAYS_LEAVE)
+                .build();
 
-        RequestOfLeave requestOfLeave1 = requestOfLeaveRepo.save(request1);
-        RequestOfLeave requestOfLeave2 = requestOfLeaveRepo.save(request2);
-        RequestOfLeave requestOfLeave3 = requestOfLeaveRepo.save(request3);
-        RequestOfLeave requestOfLeave4 = requestOfLeaveRepo.save(request4);
-        RequestOfLeave requestOfLeave5 = requestOfLeaveRepo.save(request5); // Created for postman test
-        RequestOfLeave requestOfLeave6 = requestOfLeaveRepo.save(request6); // Created for postman test
+        RequestOfLeave requestOfLeave1 = requestOfLeaveService.createRequestOfLeave(request1);
+        RequestOfLeave requestOfLeave2 = requestOfLeaveService.createRequestOfLeave(request2);
+        RequestOfLeave requestOfLeave3 = requestOfLeaveService.createRequestOfLeave(request3);
+        RequestOfLeave requestOfLeave4 = requestOfLeaveService.createRequestOfLeave(request4);
+        RequestOfLeave requestOfLeave5 = requestOfLeaveService.createRequestOfLeave(request5); // Created for postman test
+        RequestOfLeave requestOfLeave6 = requestOfLeaveService.createRequestOfLeave(request6); // Created for postman test
 
         List<Long> requestOfLeaveList1 = new ArrayList<>();
         requestOfLeaveList1.add(requestOfLeave1.getId());

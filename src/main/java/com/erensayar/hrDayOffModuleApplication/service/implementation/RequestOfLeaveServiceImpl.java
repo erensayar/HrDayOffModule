@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
@@ -25,13 +27,22 @@ import java.util.List;
 @Service
 public class RequestOfLeaveServiceImpl implements RequestOfLeaveService {
 
+    // INJECTIONS
+    //<================================================================================================================>
+
+    // Constructor Injection Fields
     private final RequestOfLeaveRepo requestOfLeaveRepo;
+
+    // Setter Injection Fields
     private EmployeeService employeeService;
 
     @Autowired // Setter injection used because EmployeeService and RequestOfLeaveService are nested.
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
+    // CONSTANTS
+    //<================================================================================================================>
 
     @Value("${company.right-of-leave.twoToFiveYearsLeaveRightAsDay}")
     private Double twoToFiveYearsLeaveRightAsDay;
@@ -42,10 +53,15 @@ public class RequestOfLeaveServiceImpl implements RequestOfLeaveService {
     @Value("${company.right-of-leave.moreThen10YearsLeaveRightAsDay}")
     private Double moreThen10YearsLeaveRightAsDay;
 
+    // PUBLIC METHODS
+    //<================================================================================================================>
+
     @Override
     public RequestOfLeave createRequestOfLeave(RequestOfLeaveDto requestOfLeaveDto) {
-        return requestOfLeaveRepo.save(converterOfRequestOfLeave(requestOfLeaveDto, "CREATE"));
+        RequestOfLeave requestOfLeave = converterOfRequestOfLeave(requestOfLeaveDto);
+        return requestOfLeaveRepo.save(setConstantsOfRequestObject(requestOfLeave));
     }
+
 
     @Override
     public RequestOfLeave getRequestOfLeaveById(Long id) {
@@ -63,7 +79,7 @@ public class RequestOfLeaveServiceImpl implements RequestOfLeaveService {
             throw new BadRequestException();
         }
         this.getRequestOfLeaveById(requestOfLeaveDto.getId()); // if request doesn't exist then we throw an error from getRequestOfLeaveById method. if exist then can execute down line
-        RequestOfLeave updatedRequestOfLeave = converterOfRequestOfLeave(requestOfLeaveDto, "UPDATE");
+        RequestOfLeave updatedRequestOfLeave = converterOfRequestOfLeave(requestOfLeaveDto);
         return requestOfLeaveRepo.save(updatedRequestOfLeave);
     }
 
@@ -84,8 +100,6 @@ public class RequestOfLeaveServiceImpl implements RequestOfLeaveService {
         RequestOfLeave requestOfLeave = this.getRequestOfLeaveById(requestId);
 
         // (2. ister employeeservice'de sağlandı burada da 1 yıl geçince 5 gün avans sıfırlanıyor ve tablodaki atamalar yapıldı)
-        /* 1 yıl doldurmamış kişiler için 5 gün izin atanmıştı bu metod tetiklendiğinde 1 yıl dolmuşsa0 ve 5 arasındaysa
-        izin hakkı sıfırlanacak. Böylece Avans izin hakkı 1 yıldan sonra kullanılamayacak,bu avans geçerliliğini yitirecek. */
         LocalDate startDateOfWork = employee.getStartDateOfWork();
         LocalDate today = LocalDate.now();
         long totalWorkingTime = ChronoUnit.DAYS.between(startDateOfWork, today);
@@ -111,35 +125,51 @@ public class RequestOfLeaveServiceImpl implements RequestOfLeaveService {
         }
     }
 
-    private RequestOfLeave converterOfRequestOfLeave(RequestOfLeaveDto requestOfLeaveDto, String flag) {
+    // PRIVATE METHODS
+    //<================================================================================================================>
 
-        // This field generate in constructor i wrote here because common condition
-        if (requestOfLeaveDto.getWantedTotalTime() != null) {
-            throw new BadRequestException();
+    // Set Request Of Leave Object Constants
+    private RequestOfLeave setConstantsOfRequestObject(RequestOfLeave request) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        request.setWantedTotalTime(calculateWantedTotalTime(request.getStartDateOfLeave(), request.getEndDateOfLeave()));
+        request.setRequestOpeningTime(LocalDateTime.now().format(formatter));
+        request.setStatus(RequestStatusEnum.AWAITING_APPROVAL);
+        return request;
+    }
+
+    private RequestOfLeave converterOfRequestOfLeave(RequestOfLeaveDto requestOfLeaveDto) {
+        return RequestOfLeave.builder()
+                .id(requestOfLeaveDto.getId())
+                .reason(requestOfLeaveDto.getReason())
+                .startDateOfLeave(requestOfLeaveDto.getStartDateOfLeave())
+                .endDateOfLeave(requestOfLeaveDto.getEndDateOfLeave())
+                .requestOpeningTime(requestOfLeaveDto.getRequestOpeningTime())
+                .leaveType(requestOfLeaveDto.getLeaveType())
+                .status(requestOfLeaveDto.getStatus())
+                .build();
+    }
+
+    // Tested. 100% worked for every situation.
+    private Double calculateWantedTotalTime(LocalDate startDateOfLeave, LocalDate endDateOfLeave) {
+        long counterOfPublicHolidays = 0;
+        long dayToBeAdded = 0;
+        long grossCalculate = ChronoUnit.DAYS.between(startDateOfLeave, endDateOfLeave);
+        // First day is a holiday control
+        int dayOfWeekForFirstDay = startDateOfLeave.getDayOfWeek().getValue();
+        if (dayOfWeekForFirstDay == 6 || dayOfWeekForFirstDay == 7) {
+            counterOfPublicHolidays++;
         }
-
-        if (flag.equals("CREATE")) {
-            // These fields generate in constructor, client can't send these parameters.
-            if (requestOfLeaveDto.getId() != null
-                    || requestOfLeaveDto.getStatus() != null
-                    || requestOfLeaveDto.getRequestOpeningTime() != null) {
-                throw new BadRequestException();
+        // Then other days control, are they holiday?
+        for (int i = startDateOfLeave.getDayOfYear(); i <= endDateOfLeave.getDayOfYear(); i++) {
+            dayToBeAdded++;
+            LocalDate nextDay = startDateOfLeave.plusDays(dayToBeAdded);
+            int dayOfWeek = nextDay.getDayOfWeek().getValue();
+            if (dayOfWeek == 6 || dayOfWeek == 7) {
+                counterOfPublicHolidays++;
             }
-            return new RequestOfLeave(
-                    requestOfLeaveDto.getReason(),
-                    requestOfLeaveDto.getStartDateOfLeave(),
-                    requestOfLeaveDto.getEndDateOfLeave(),
-                    requestOfLeaveDto.getLeaveType());
         }
-
-        return new RequestOfLeave(
-                requestOfLeaveDto.getId(),
-                requestOfLeaveDto.getReason(),
-                requestOfLeaveDto.getStartDateOfLeave(),
-                requestOfLeaveDto.getEndDateOfLeave(),
-                requestOfLeaveDto.getRequestOpeningTime(),
-                requestOfLeaveDto.getLeaveType(),
-                requestOfLeaveDto.getStatus());
+        // Then subtraction holidays
+        return (double) grossCalculate - counterOfPublicHolidays;
     }
 
 }

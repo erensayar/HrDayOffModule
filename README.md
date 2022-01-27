@@ -69,7 +69,7 @@ Maven:
     
 * Now we have a jar file.
 
-        java -jar target/hr-day-off-module.jar
+        $ java -jar target/<jarFileName>.jar
         
 ## 2. Use Wrappers
 Also you can use maven wrapper for run the app.(mvnw or mvnw.cmd)
@@ -91,18 +91,21 @@ If you don't want setups, you can use wrapper. Easiest way run the spring applic
     
 
 # I Prepared Collection With Saved Request & Saved Responses
-* You can use swagger of course but if you want use postman or something u can import this collection.
-
-* You can find collection for test the api. This collection include saved request and response and all endpoints. 
+* You can use swagger of course but if you want use postman or something u can import this collection. This collection include saved requests, responses and all endpoints. 
 
 * If employee id need for send to endpoint take the employee id from an employee service! Id numbers are unique.
 
-Directory: dev-doc > Hr Day Off Module.postman_collection.json 
-
-Some Requests:
+Directory: ./dev-doc/Hr Day Off Module.postman_collection.json 
 
 ![Requests](./dev-doc/HttpClient-SS.png)
 
 # Entity Relation Diagram (ERD)
 
 ![Requests](./dev-doc/ERD.png)
+
+# Notes
+When use create employee when set requestOfLeaveIdNumbers 5 and 6. like:
+
+    "requestOfLeaveIdNumbers": [5,6]
+
+5. and 6. requestOfLeave object  has not relation any employee. 

@@ -23,7 +23,13 @@ import java.util.UUID;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
+    // INJECTIONS
+    //<================================================================================================================>
+
+    // Constructor Injection Fields
     private final EmployeeRepo employeeRepo;
+
+    // Setter Injection Fields
     private RequestOfLeaveService requestOfLeaveService;
 
     @Autowired // Setter injection used because EmployeeService and RequestOfLeaveService are nested.
@@ -31,14 +37,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.requestOfLeaveService = requestOfLeaveService;
     }
 
+    // CONSTANTS
+    //<================================================================================================================>
+
     @Value("${company.right-of-leave.lessThen1Year}")
     private Double lessThen1Year;
 
+    // PUBLIC METHODS
+    //<================================================================================================================>
+
     @Override
     public Employee createEmployee(EmployeeDto employeeDto) {
-        if (employeeDto.getId() != null) {
-            throw new BadRequestException();
-        }
+        employeeDto.setId(null);
         employeeDto.setUnusedDayOff(lessThen1Year);
         employeeDto.setId("emp-" + UUID.randomUUID());
         return employeeRepo.save(converterOfEmployee(employeeDto));
@@ -57,7 +67,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee updateEmployee(EmployeeDto employeeDto) {
         if (employeeDto.getId() == null) {
-            throw new BadRequestException();
+            throw new BadRequestException("Enter employee id"); // TODO: Take from prop file
         }
         this.getEmployeeById(employeeDto.getId()); // if employee doesn't exist then we throw an error from getEmployeeById method. if exist then can execute down line
         return employeeRepo.save(converterOfEmployee(employeeDto));
@@ -65,21 +75,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployeeById(String id) {
-        this.getEmployeeById(id);
+        this.getEmployeeById(id); // Control -> is exist the employee
         employeeRepo.deleteById(id);
     }
 
     private Employee converterOfEmployee(EmployeeDto employeeDto) {
 
         // This block wrote for getting requestOfLeave object, through sent id numbers from client
-        //<============================================================================================================>
         List<RequestOfLeave> requests = new ArrayList<>();
         if (employeeDto.getRequestOfLeaveIdNumbers() != null) {
             for (Long requestsIdNumber : employeeDto.getRequestOfLeaveIdNumbers()) {
                 requests.add(requestOfLeaveService.getRequestOfLeaveById(requestsIdNumber));
             }
         }
-        //<============================================================================================================>
 
         return Employee.builder()
                 .id(employeeDto.getId())
