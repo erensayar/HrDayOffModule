@@ -76,6 +76,7 @@ public class RequestOfLeaveServiceImpl implements RequestOfLeaveService {
     @Override
     public RequestOfLeave updateRequestOfLeave(RequestOfLeaveDto requestOfLeaveDto) {
         if (requestOfLeaveDto.getId() == null) {
+            log.debug("RequestOfLeaveDto object's id is null");
             throw new BadRequestException();
         }
         this.getRequestOfLeaveById(requestOfLeaveDto.getId()); // if request doesn't exist then we throw an error from getRequestOfLeaveById method. if exist then can execute down line
@@ -121,6 +122,7 @@ public class RequestOfLeaveServiceImpl implements RequestOfLeaveService {
             employee.setUnusedDayOff(exist - requested);
             return requestOfLeaveRepo.save(requestOfLeave);
         } else {
+            log.debug("Employee has not enough right to leave");
             throw new OkWithMessage("Yeterli izin hakkı yok."); // TODO: property dosyasina yazılmalı
         }
     }
